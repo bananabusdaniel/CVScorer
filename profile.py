@@ -12,8 +12,10 @@ class methods - ??
 """
 
 class Candidate:
-    def __init__(self, num, full_name, experience, studies, contact, misc, analysis, score):
-        self.num = num
+    counter = 1
+    def __init__(self, full_name, experience, studies, contact, misc, analysis, score):
+        self.num = Candidate.counter
+        Candidate.counter +=1
         self.full_name = full_name
         self.experience = experience
         self.studies = studies
@@ -23,18 +25,7 @@ class Candidate:
         self.score = score
 
     def __str__(self):
-        return f"Num: {self.num} Full Name: {self.full_name} Experience: {self.experience} Studies: {self.studies} Contact: {self.contact} Misc: {self.misc} Analysis: {self.analysis} Score: {self.score} "
-
-    #Getter for num
-    @property
-    def num(self):
-        return self._num
-    #Setter for num
-    @num.setter
-    def num(self, num):
-        if num > 100:
-            raise ValueError("Num above 100")
-        self._num = num
+        return f"Num: {self.num} Full Name: {self.full_name} Experience: {self.experience} Studies: {self.studies} Contact: {self.contact} Misc: {self.misc} Analysis: {self.analysis} Score: {self.score}"
 
     #Getter for full_name
     @property
@@ -107,8 +98,10 @@ class Candidate:
         self._score = score
     
 def main(): #self, num, full_name, experience, studies, contact, misc, analysis, score
-    candidate = Candidate(0, "Daniel Nama", "Little experience", "Reichman", "0584525392", "NA", "Good candidate", 75)
-    print(candidate)
+    candidate0 = Candidate("Daniel Nama", "Little experience", "Reichman", "0584525392", "NA", "Good candidate", 75)
+    candidate1 = Candidate("MelissaMNoritz", "Little experience", "Reichman", "0584525392", "NA", "Good candidate", 75)
+    print(candidate0)
+    print(candidate1)
 
 if __name__ == "__main__":
     main()

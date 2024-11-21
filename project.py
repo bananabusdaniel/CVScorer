@@ -4,7 +4,7 @@ import pdfplumber
 import ast
 import pickle
 from collections import defaultdict
-from profile import Candidate
+from Candidate import Candidate
 
 openai.api_key = os.environ['OPENAI_API_KEY']
 SYSTEM_MESSAGE_TEXT_FILE = "system_message.txt"

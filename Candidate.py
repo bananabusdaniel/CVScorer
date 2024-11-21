@@ -1,21 +1,11 @@
-"""have a profile class - 
-attributes/instance variables - num,"grade",full name, experience, studies, contact, misc
-skills, current job + time, studies, a short paragraph analysis (misc)
-
-build the class, initialzing and encapsulating it - @property, @value.setter
-_str_ method - returns some "Error"
-using _ in all uses of the value except in init setter
-
-class methods - ??
-
-
-"""
 
 class Candidate:
+
     counter = 1
+
     def __init__(self, full_name, experience, studies, contact, misc, analysis, score):
         self.num = Candidate.counter
-        Candidate.counter +=1
+        Candidate.counter += 1
         self.full_name = full_name
         self.experience = experience
         self.studies = studies
@@ -41,6 +31,7 @@ class Candidate:
     @property
     def experience(self):
         return self._experience
+    
     #Setter for experience
     @experience.setter
     def experience(self, experience):
@@ -51,6 +42,7 @@ class Candidate:
     @property
     def studies(self):
         return self._studies
+    
     #Setter for studies
     @studies.setter
     def studies(self, studies):

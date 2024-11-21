@@ -23,21 +23,28 @@ def main():
 
     load_candidates()
     for file in os.listdir(cv_folder_path):
+
         pdf_path = cv_folder_path + "/" + file
+
         #reads and stores system_message - constant, and job details - variable depending on job.
         system_message= read_txt_file(SYSTEM_MESSAGE_TEXT_FILE, read_txt_file(JOB_DETAILS_TEXT_FILE))
+
         #reads the CV using pdfplumber library
         user_message= extract_text(pdf_path)
+
         #gets the response from the GPT API using relevant information, as a machine readible dict
         output_dict = prompt_gpt(user_message, system_message)
+
         try:
             output_dict=ast.literal_eval(output_dict)
         except SyntaxError:
             #it wasnt machine readible - GPT's mistake
             print("The output is not a valid JSON")
+
         # turns the dict with relevant information about the candidate to an instance of the Candidate object.
         parse_dict_to_candidate(output_dict)
         #preview.
+
     store_candidates(candidates)
 
 

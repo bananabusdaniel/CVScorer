@@ -14,7 +14,7 @@ JOB_DETAILS_TEXT_FILE = "job_details.txt"
 DELIMITER = "####"
 
 #depending on input of user
-cv_folder_path = "/Users/danielnamatinia/Desktop/CV"
+cv_folder_path = "./CV"
 
 
 #list of Candidate objects

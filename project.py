@@ -6,7 +6,6 @@ import pickle
 from collections import defaultdict
 from Candidate import Candidate
 
-openai.api_key = os.environ['OPENAI_API_KEY']
 SYSTEM_MESSAGE_TEXT_FILE = "system_message.txt"
 JOB_DETAILS_TEXT_FILE = "job_details.txt"
 DELIMITER = "####"
@@ -14,12 +13,14 @@ DELIMITER = "####"
 #depending on input of user
 cv_folder_path = "/Users/danielnamatinia/Desktop/CV"
 
-client = openai.OpenAI()
 
 #list of Candidate objects
 candidates = []
 
 def main():
+    
+    chatgpt_setup()
+
     load_candidates()
     for file in os.listdir(cv_folder_path):
         pdf_path = cv_folder_path + "/" + file
@@ -38,6 +39,17 @@ def main():
         parse_dict_to_candidate(output_dict)
         #preview.
     store_candidates(candidates)
+
+
+def chatgpt_setup():
+
+    openai.api_key = os.environ['OPENAI_API_KEY']
+
+    # Declare global client
+    global client
+    client = openai.OpenAI()
+
+
 
 def store_candidates(candidates):
     with open("candidates.pkl", "wb") as file:

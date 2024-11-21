@@ -5,6 +5,9 @@ import ast
 import pickle
 from collections import defaultdict
 from Candidate import Candidate
+from dotenv import load_dotenv
+
+load_dotenv()
 
 SYSTEM_MESSAGE_TEXT_FILE = "system_message.txt"
 JOB_DETAILS_TEXT_FILE = "job_details.txt"

@@ -26,8 +26,7 @@ def main():
     
     chatgpt_setup()
 
-    load_candidates()
-    for file in os.listdir(cv_folder_path):
+    load_candidates_json()
 
         pdf_path = cv_folder_path + "/" + file
         if file == ".DS_Store" or file_analyzed(file):

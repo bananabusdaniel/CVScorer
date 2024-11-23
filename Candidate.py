@@ -3,10 +3,11 @@ class Candidate:
 
     counter = 1
 
-    def __init__(self, full_name, experience, studies, contact, misc, analysis, score):
+    def __init__(self, full_name, file_name, experience, studies, contact, misc, analysis, score):
         self.num = Candidate.counter
         Candidate.counter += 1
         self.full_name = full_name
+        self.file_name = file_name
         self.experience = experience
         self.studies = studies
         self.contact = contact
@@ -15,7 +16,7 @@ class Candidate:
         self.score = score
 
     def __str__(self):
-        return f"Num: {self.num} Full Name: {self.full_name} Experience: {self.experience} Studies: {self.studies} Contact: {self.contact} Misc: {self.misc} Analysis: {self.analysis} Score: {self.score}"
+        return f"Num: {self.num} Full Name: {self.full_name} File Name: {self.file_name} Experience: {self.experience} Studies: {self.studies} Contact: {self.contact} Misc: {self.misc} Analysis: {self.analysis} Score: {self.score}"
 
     #Getter for full_name
     @property
@@ -26,6 +27,16 @@ class Candidate:
     def full_name(self, full_name):
         #error checking - raise error
         self._full_name = full_name
+
+    #Getter for file_name
+    @property
+    def file_name(self):
+        return self._file_name
+    #Setter for file_name
+    @file_name.setter
+    def file_name(self, file_name):
+        #error checking - raise error
+        self._file_name = file_name
 
     #Getter for experience
     @property

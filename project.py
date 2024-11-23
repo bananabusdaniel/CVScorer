@@ -3,6 +3,7 @@ import openai
 import pdfplumber
 import ast
 import pickle
+import json
 from collections import defaultdict
 from Candidate import Candidate
 from dotenv import load_dotenv
@@ -48,8 +49,7 @@ def main():
         parse_dict_to_candidate(output_dict)
         #preview.
 
-    store_candidates(candidates)
-
+    store_candidates_json(candidates)
 
 def chatgpt_setup():
 
@@ -60,16 +60,28 @@ def chatgpt_setup():
     client = openai.OpenAI()
 
 
-
-def store_candidates(candidates):
-    with open("candidates.pkl", "wb") as file:
-        pickle.dump(candidates, file)
+def store_candidates_json(candidates):
+    candidates_json = []
+    with open("candidates_json.json", "w") as file:
+        for candidate in candidates:
+            candidates_json.append({
+                "full_name":candidate.full_name,
+                "experience":candidate.experience,
+                "studies":candidate.studies,
+                "contact":candidate.contact,
+                "misc":candidate.misc,
+                "analysis":candidate.analysis,
+                "score":candidate.score,
+            })
+        json.dump(candidates_json, file, indent=4)
 
 def load_candidates():
+
     try:
-        with open("candidates.pkl", "wb") as file:
+        with open("candidates.pkl", "rb") as file:
             global candidates
             candidates = pickle.load(file)
+
     except Exception as e:
         print("No candidates inputted yet - Error type: ", e.__class__.__name__)
 

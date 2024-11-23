@@ -102,6 +102,8 @@ def load_candidates_json():
     except FileNotFoundError:
         print("No such file to load.")
 
+def create_candidate(dict):
+    return Candidate(**dict)
 
 #turns the dict from GPT API to candidate profile.
 def parse_dict_to_candidate(json): 

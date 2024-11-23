@@ -29,6 +29,8 @@ def main():
     for file in os.listdir(cv_folder_path):
 
         pdf_path = cv_folder_path + "/" + file
+        if file == ".DS_Store" or file_analyzed(file):
+            continue
 
         #reads and stores system_message - constant, and job details - variable depending on job.
         system_message= read_txt_file(SYSTEM_MESSAGE_TEXT_FILE, read_txt_file(JOB_DETAILS_TEXT_FILE))
@@ -62,6 +64,11 @@ def chatgpt_setup():
     global client
     client = openai.OpenAI()
 
+def file_analyzed(file):
+    for candidate in candidates:
+        if file == candidate.file_name:
+            return True
+    return False
 
 def store_candidates_json(candidates):
 

@@ -61,11 +61,16 @@ def chatgpt_setup():
 
 
 def store_candidates_json(candidates):
+
     candidates_json = []
+
     with open("candidates_json.json", "w") as file:
+        
         for candidate in candidates:
+
             candidates_json.append({
                 "full_name":candidate.full_name,
+                "file_name":candidate.file_name,
                 "experience":candidate.experience,
                 "studies":candidate.studies,
                 "contact":candidate.contact,

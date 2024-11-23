@@ -133,12 +133,11 @@ def prompt_gpt(user_message, system_message):
 
 #returns CV text from PDF
 def extract_text(pdf_path):
-    text = ''
+    
     with pdfplumber.open(pdf_path) as pdf:
-        for page in pdf.pages:
-            text += page.extract_text()
-    return text
 
+        return ' '.join([page.extract_text() for page in pdf.pages])
+    
 #reads .txt files - as an f string
 def read_txt_file(text_file, *args):
     str = open(text_file, "r").read()

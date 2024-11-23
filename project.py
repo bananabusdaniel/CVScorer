@@ -13,9 +13,10 @@ load_dotenv()
 SYSTEM_MESSAGE_TEXT_FILE = "system_message.txt"
 JOB_DETAILS_TEXT_FILE = "job_details.txt"
 DELIMITER = "####"
+CV_FOLDER_PATH = "./CV"
 
 #depending on input of user
-cv_folder_path = "./CV"
+
 
 
 #list of Candidate objects

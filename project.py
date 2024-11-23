@@ -51,9 +51,9 @@ def main():
         output_dict["file_name"] = file
 
         # turns the dict with relevant information about the candidate to an instance of the Candidate object.
-        parse_dict_to_candidate(output_dict)
-        #preview.
-
+        candidates.append(create_candidate(output_dict))
+        #candidates.sort(key=lambda x: x.score) -sort by score
+            
     store_candidates_json(candidates)
 
 def chatgpt_setup():

@@ -45,6 +45,9 @@ def main():
             #it wasnt machine readible - GPT's mistake
             print("The output is not a valid JSON")
 
+        # add a value to the candidate object
+        output_dict["file_name"] = file
+
         # turns the dict with relevant information about the candidate to an instance of the Candidate object.
         parse_dict_to_candidate(output_dict)
         #preview.

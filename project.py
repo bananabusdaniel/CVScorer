@@ -2,7 +2,6 @@ import os
 import openai
 import pdfplumber
 import ast
-import pickle
 import json
 from collections import defaultdict
 from Candidate import Candidate

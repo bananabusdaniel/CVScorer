@@ -91,15 +91,18 @@ def store_candidates_json(candidates):
             })
         json.dump(candidates_json, file, indent=4)
 
-def load_candidates():
+        json.dump(candidates_json, file, indent=4)
 
+def load_candidates_json():
+    #load to a list after instanciating them.
     try:
-        with open("candidates.pkl", "rb") as file:
-            global candidates
-            candidates = pickle.load(file)
+        with open("candidates_json.json", "r") as file:
+            list = json.load(file)
+            for candidate in list:
+                candidates.append(create_candidate(candidate))
+    except FileNotFoundError:
+        print("No such file to load.")
 
-    except Exception as e:
-        print("No candidates inputted yet - Error type: ", e.__class__.__name__)
 
 #turns the dict from GPT API to candidate profile.
 def parse_dict_to_candidate(json): 

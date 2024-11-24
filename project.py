@@ -40,11 +40,8 @@ def main():
         #gets the response from the GPT API using relevant information, as a machine readible dict
         output_dict = prompt_gpt(user_message, system_message)
 
-        try:
-            output_dict=ast.literal_eval(output_dict)
-        except SyntaxError:
-            #it wasnt machine readible - GPT's mistake
-            print("The output is not a valid JSON")
+        # gets the response from the GPT API using relevant information, as a machine readible dict
+        output_dict = prompt_gpt(user_message, system_message)
 
         # add a value to the candidate object
         output_dict["file_name"] = file
@@ -110,6 +107,12 @@ def parse_dict_to_candidate(json):
     candidates.append(candidate)
      # Sorts candidates by best score
     candidates.sort(key=lambda x: x.score)
+def output_dict(response):
+    try:
+        return ast.literal_eval(response)
+    except SyntaxError:
+        # it wasnt machine readible - GPT's mistake
+        print("The output is not a valid JSON")
 
 #returns API response: helper function with request to GPT's API
 def get_completion(messages, temperature=0, max_completion_tokens=None):
@@ -119,7 +122,7 @@ def get_completion(messages, temperature=0, max_completion_tokens=None):
         temperature=temperature,
         max_completion_tokens=max_completion_tokens
     )
-    return response.choices[0].message.content
+    return output_dict(response.choices[0].message.content)
 
 #returns API response: concatanates model messages and calls helper function
 def prompt_gpt(user_message, system_message):

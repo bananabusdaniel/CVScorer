@@ -36,6 +36,12 @@ def main():
 
         #reads the CV using pdfplumber library
         user_message= extract_text(pdf_path)
+        # reads and stores system_message - constant, and job details - variable depending on job.
+        system_message = format_text(
+            read_txt_file(SYSTEM_MESSAGE_TEXT_FILE),
+            job_details=read_txt_file(JOB_DETAILS_TEXT_FILE),
+            DELIMITER=DELIMITER,
+        )
 
         #gets the response from the GPT API using relevant information, as a machine readible dict
         output_dict = prompt_gpt(user_message, system_message)

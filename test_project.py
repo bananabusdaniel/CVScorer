@@ -8,3 +8,11 @@ def test_file_analyzed():
     assert project.file_analyzed("MelissaMoritzCV2024", mock_candidates) == False
     assert project.file_analyzed("RandomDocument", mock_candidates) == False
     # assert project.file_analyzed([]) == False
+
+def test_output_dict():
+
+    assert project.output_dict('{"full_name":"daniel", "num":3}') == {"full_name":"daniel", "num":3}
+    assert project.output_dict('{"full_name":"melissa", "num":3}') == {"full_name":"melissa", "num":3}
+    with pytest.raises(SystemExit):
+        project.output_dict('{')
+

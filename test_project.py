@@ -16,3 +16,4 @@ def test_output_dict():
     with pytest.raises(SystemExit):
         project.output_dict('{')
 
+def test_format_text():    hello = "hello!"    test_text = project.read_txt_file("test_txt_file.txt")    assert project.format_text(test_text, hello=hello) == f"This should say hello!, hello!"if __name__ == "__main__":    main()

@@ -142,9 +142,14 @@ def extract_text(pdf_path):
         return ' '.join([page.extract_text() for page in pdf.pages])
     
 #reads .txt files - as an f string
-def read_txt_file(text_file, *args):
-    str = open(text_file, "r").read()
-    return eval(f'{str}')
+        return " ".join([page.extract_text() for page in pdf.pages])
+
+def read_txt_file(text_file):
+    return open(text_file, "r").read()
+
+# reads .txt files - as an f string
+def format_text(text, **kwargs):
+    return text.format(**kwargs)
 
 
 if __name__ == "__main__":

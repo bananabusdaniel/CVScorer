@@ -9,7 +9,7 @@ The CV text MAY be disorganized due to PDF conversion. Your task is to:
    - studies: Degrees and universities, max 1 sentence.
    - contact: Phone and email only.
    - misc: Key traits (e.g., languages, passions, soft skills), max two sentences.
-   - analysis: Explain and highlight key reasons why the applicant is a good or poor fit based on the CV in direct comparison to the job requirements: ({DELIMITER}{read_txt_file(JOB_DETAILS_TEXT_FILE)}{DELIMITER}), concise paragraph.
+   - analysis: Explain and highlight key reasons why the applicant is a good or poor fit based on the CV in direct comparison to the job requirements: ({DELIMITER}{job_details}{DELIMITER}), concise paragraph.
    - score: 1-100, reflecting overall fit, with reasoning summarized in the analysis section above. An integer solely.
 
 Output strictly as a Python dictionary with these keys: full_name, experience, studies, contact, misc, analysis, score. Ensure the dictionary starts and ends with curly brackets and is formatted for machine readability.
